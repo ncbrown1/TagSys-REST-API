@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'tagsys/templates'),
+)
+
 ADMINS = (
     ('Nick Brown', 'ncbrown@engineering.ucsb.edu'),
 )
@@ -93,6 +98,7 @@ STATIC_URL = '/static/'
 
 # Rest Framework Configuration
 REST_FRAMEWORK = {
+    'PAGINATE_BY': 100,
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
 }
 
