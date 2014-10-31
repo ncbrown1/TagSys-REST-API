@@ -9,28 +9,28 @@ class CheckViewSet(viewsets.ModelViewSet):
 	"""
 	API endpoint that allows checks to be viewed or edited
 	"""
-	queryset = Check.objects.all().reverse()
+	queryset = Check.objects.order_by("-id")
 	serializer_class = CheckSerializer
 
 class TagViewSet(viewsets.ModelViewSet):
 	"""
 	API endpoint that allows tags to be viewed or edited
 	"""
-	queryset = Tag.objects.all().reverse()
+	queryset = Tag.objects.order_by("-id")
 	serializer_class = TagSerializer
 
 class DeviceViewSet(viewsets.ModelViewSet):
 	"""
 	API endpoint that allows devices to be viewed or edited
 	"""
-	queryset = Device.objects.all().reverse()
+	queryset = Device.objects.order_by("-id")
 	serializer_class = DeviceSerializer
 
 class LocationViewSet(viewsets.ModelViewSet):
 	"""
 	API endpoint that allows locations to be viewed or edited
 	"""
-	queryset = Location.objects.all().reverse()
+	queryset = Location.objects.order_by("-id")
 	serializer_class = LocationSerializer
 
 def index(request):
