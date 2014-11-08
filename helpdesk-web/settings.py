@@ -18,7 +18,7 @@ TEMPLATE_DIRS = (
 )
 
 ADMINS = (
-    ('Nick Brown', 'ncbrown@engineering.ucsb.edu'),
+    ('<your-name>', '<your-email-address>'), # generalized for security purposes
 )
 EMAIL_SUBJECT_PREFIX = '[Django Helpdesk]'
 
@@ -34,7 +34,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['chef.cs.ucsb.edu', 'corral.engr.ucsb.edu', 'hanshan.cs.ucsb.edu']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -70,9 +70,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'test',
-	'USER': 'test_user',
-	'PASSWORD': 'ncbrownpassword',
-	'HOST': 'deepthought.cs.ucsb.edu',
+	'USER': '<your-db-username>', # generalized for security purposes
+	'PASSWORD': '<your-db-password>', # generalized for security purposes
+	'HOST': '<your-db-host>', # generalized for security purposes
     }
 }
 
@@ -120,30 +120,30 @@ AUTH_LDAP_CONNECTION_OPTIONS = {
 }
 
 # Baseline Configuration
-AUTH_LDAP_SERVER_URI = "ldaps://ldap4.engr.ucsb.edu:636"
-AUTH_LDAP_BIND_DN = "uid=nssldap,ou=people,dc=engr,dc=ucsb,dc=edu"
-AUTH_LDAP_BIND_PASSWORD = "buMps3tSp1ke"
-AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=engr,dc=ucsb,dc=edu", ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+AUTH_LDAP_SERVER_URI = "ldaps://<your-ldap-host>:636" # generalized for purposes
+AUTH_LDAP_BIND_DN = "<your-ldap-bind-dn>" # generalized for security purposes
+AUTH_LDAP_BIND_PASSWORD = "<your-ldap-bind-dn-password>" # generalized for security purposes
+AUTH_LDAP_USER_SEARCH = LDAPSearch("<your-base-dn>", ldap.SCOPE_SUBTREE, "(uid=%(user)s)") # generalized for security purposes
 AUTH_LDAP_ALWAYS_UPDATE_USER = True
 
 # Basic Group Parameters
-AUTH_LDAP_GROUP_SEARCH = LDAPSearch("ou=groups,dc=engr,dc=ucsb,dc=edu", ldap.SCOPE_SUBTREE, "objectClass=groupOfNames")
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch("<ldap-group-ou>", ldap.SCOPE_SUBTREE, "objectClass=groupOfNames") # generalized for security purposes
 # Set Group Type
 AUTH_LDAP_GROUP_TYPE = GroupOfNamesType()
 # Simple Group Restrictions
-# AUTH_LDAP_REQUIRE_GROUP = "cn=coe-admin,ou=people,dc=engr,dc=ucsb,dc=edu"
+AUTH_LDAP_REQUIRE_GROUP = "<ldap-group-ou>" # generalized for security purposes
 
 # Populate the Django User from the LDAP directory
 AUTH_LDAP_USER_ATTR_MAP = {
     "first_name": "cn",
-    "email":"mail",
+    "email": "mail",
 }
 
 AUTH_LDAP_USER_FLAGS_BY_GROUP = {
-    "is_staff":"cn=coe-admin,ou=groups,dc=engr,dc=ucsb,dc=edu",
-    "is_superuser": "cn=coe-admin,ou=groups,dc=engr,dc=ucsb,dc=edu",
-#    "is_superuser": "cn=coe-admin,ou=groups,dc=engr,dc=ucsb,dc=edu",
+    "is_staff": "<ldap-group-ou>", # generalized for security purposes
+    "is_superuser": "<ldap-group-ou>", # generalized for security purposes
 }
+
 AUTH_LDAP_MIRROR_GROUPS = True
 AUTH_LDAP_FIND_GROUP_PERMS = True
 

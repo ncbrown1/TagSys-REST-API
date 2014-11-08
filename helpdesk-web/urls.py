@@ -22,7 +22,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^root/', include(router.urls), name="root"),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^$', RedirectView.as_view(url="/root/")),
+#    url(r'^rounds/', views.rounds, name="gui"),
+    url(r'^$', views.index, name="home"),
     url(r'^static/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
 )
 
