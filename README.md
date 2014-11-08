@@ -1,4 +1,4 @@
-Django-Tagsys
-=============
+TagSys-REST-API
+===============
 
-A simple app designed to act as a REST client for collecting data about the Engineering Computing Infrastructure at UCSB. Requires NFC compatibility on host device.
+Python-Django powered REST api designed for the TagSys Android App. 
